@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Bprod - Be Productive",
+  "short_name": "Bprod",
+  "description": "Track your focus time, build streaks, and visualize your productivity with Bprod \u2013 Be Productive.",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "idle",
+    "tabs",
+    "offscreen",
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "128": "assets/icon128.png",
+    "512": "assets/icon512.png"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "options_page": "dashboard/dashboard.html",
+  "content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+  }
+]
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bprod</title>
+  <link rel="stylesheet" href="popup.css" />
+</head><body>
+  <div class="card">
+    
+    <div id="mainContent">
+      <button id="themeToggle" class="theme-toggle" title="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+      <div class="top">
+        <div class="brand"><img id="logo" src="../assets/icon128.png" alt="Bprod" /> <div><div class="title">Bprod</div><div class="sub">Be Productive</div></div></div>
+        <div id="goalInfo" class="goal">0 / 25 min</div>
+      </div>
+
+      <div class="timer-wrap">
+        <div id="timerBig" class="timer">25:00</div>
+        <div class="controls">
+          <button id="primaryButton" class="btn primary">Start</button>
+          
+          <div class="btn-wrapper">
+            <button id="saveButton" class="btn">Save</button>
+            <span id="saveTooltip" class="tooltip-text">Start the timer first.</span>
+          </div>
+          
+          <button id="resetButton" class="btn ghost">Reset</button>
+        </div>
+        <div id="progress" class="progress"><div id="progressFill"></div></div>
+      </div>
+
+      <div class="summary">
+        <div class="summary-nav">
+          <button id="showDomainsBtn" class="summary-tab active" title="Show Domains">Domains</button>
+          <button id="showTasksBtn" class="summary-tab" title="Show Tasks">Today's Tasks</button>
+        </div>
+
+        <div id="domainSummaryContent">
+          <div id="todaySummary">No productive time logged today.</div>
+          <div id="domainList" class="domainList"></div>
+        </div>
+
+        <div id="taskSummaryContent" style="display: none;">
+          <div class="task-input-row">
+            <input type="text" id="taskInput" placeholder="Add a new task..."/>
+            <button id="addTaskBtn" class="btn small primary" title="Add task">+</button>
+          </div>
+          <ul id="taskList"></ul>
+        </div>
+      </div>
+      <div class="footer">
+        <button id="openDash" class="btn small">Open Dashboard</button>
+        <button id="exportCsv" class="btn small ghost">Export CSV</button>
+      </div>
+    </div>
+    
+    <div id="successContent" class="success-screen" style="display: none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="success-icon">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <h2>Focus Complete!</h2>
+      <p>Your time has been logged.</p>
+    </div>
+    
+  </div>
+
+ 
+<script src="../utils/storage.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

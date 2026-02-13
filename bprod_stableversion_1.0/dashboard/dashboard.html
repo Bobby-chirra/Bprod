@@ -1,0 +1,109 @@
+ <!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bprod Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Bprod Dashboard</h1>
+      <div class="controls-container">
+          <div class="control-group">
+              <label for="goalInput">Daily Goal (min)</label>
+              <input type="number" id="goalInput" value="150">
+          </div>
+          <div class="control-group">
+              <label for="pomDurationInput">Pomodoro Time (min)</label>
+              <input type="number" id="pomDurationInput" value="25">
+          </div>
+          <button id="saveSettings" class="btn-primary">Save</button>
+          <div class="control-group dark-mode-toggle">
+              <input type="checkbox" id="darkToggle">
+              <label for="darkToggle">Dark Mode</label>
+          </div>
+      </div>
+    </header>
+    <main>
+      <section id="todayBox" class="card">
+        <h2 id="day-details-heading">Today</h2>
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-label">Total / Goal</span>
+            <div id="todaySummary">Loading...</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">vs Yesterday</span>
+             <div id="comparison">-</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Streak</span>
+            <div id="streak">-</div>
+          </div>
+        </div>
+        <hr>
+        <h3 style="margin-top: 5px;margin-bottom: 5px;text-align: center;">Analytics</h3>
+        <div class="chart-container">
+          <canvas id="todayChart"></canvas>
+        </div>
+
+
+      </section>
+      <div class="grid-container-2col">
+        <section id="domainsBox" class="card">
+          <h2 id="domain-breakdown-heading">Domain Breakdown</h2>
+          <ul id="domainList"></ul>
+        </section>
+
+        <section id="tasksBox" class="card">
+          <h2>Tasks</h2>
+          <div class="task-input-row" id="dashboardTaskInputRow">
+            <input type="text" id="dashboardTaskInput" placeholder="Add a new task..."/>
+            <button id="dashboardAddTaskBtn" class="btn small primary" title="Add task">+</button>
+          </div>
+          <ul id="dashboardTaskList"></ul>
+        </section>
+      </div>
+
+      <section id="calendarBox" class="card">
+        <div class="calendar-header">
+          <button id="prevMonthBtn" title="Previous Month">&lt;</button>
+          <h2 id="monthYearDisplay">October 2025</h2>
+          <button id="nextMonthBtn" title="Next Month">&gt;</button>
+        </div>
+        <div id="calendarDays" class="calendar-grid">
+            </div>
+        <div class="legend">Darker = more productive minutes</div>
+      </section>
+
+      <section class="card">
+        <h2>Export / Import</h2>
+
+        <button id="exportToday">Export Today</button>
+        <button id="exportAll">Export All Time</button>
+        <button id="clearData">Clear All Data</button>
+
+        <div class="range-export">
+          <label for="startDate">From:</label>
+          <input type="date" id="startDate">
+          <label for="endDate" style="margin-left: 10px;">To:</label>
+          <input type="date" id="endDate">
+          <button id="exportRange" style="margin-left: 10px;">Export Range</button>
+        </div>
+      </section>
+      <footer>
+        <div class="footerclass">
+          <h3 title="For queries and Improvements">&copy;  
+          <a href="mailto:chbobby184@gmail.com" class="c_name">Bobby</a>
+          </h3>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="../utils/storage.js"></script>
+  <script src="chart.umd.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

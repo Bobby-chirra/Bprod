@@ -1,0 +1,409 @@
+
+:root{--bg:#f8fbff;--card:#ffffff;--accent:#1e73be;--muted:#6b7b8e}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#082034;padding:10px;width:360px;}
+.card{background:var(--card);border-radius:12px;padding:14px;
+  box-shadow:0 10px 30px rgba(15,40,70,0.08)}
+  /* box-shadow: 0 0 8px rgba(0,0,0,0.1);} */
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.brand{display:flex;gap:10px;align-items:center}
+.brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
+.title{font-weight:700;font-size:18px}
+.sub{font-size:12px;color:var(--muted)}
+.timer-wrap{text-align:center;padding:6px 0}
+.timer{font-size:42px;font-weight:700;color:#08304a}
+.controls{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.btn{padding:8px 12px;border-radius:8px;border:none;background:#e9f4fb;color:var(--accent);cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);color:white;box-shadow:0 6px 18px rgba(30,115,190,0.14)}
+.btn.ghost{background:transparent;border:1px solid #e6eef7;color:var(--accent)}
+.btn.small{padding:6px 8px;font-size:13px;border-radius:8px}
+.progress{height:10px;background:#eaf4fb;border-radius:6px;margin:6px 30px;overflow:hidden}
+#progressFill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#2aa1ff);border-radius:6px}
+.summary{
+  margin-top:6px;
+  padding:12px;
+  background:#f7f5f5af;
+  border-radius:8px;
+  font-size:13px;
+  color:#123;
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+   /* border: 2px solid #f1f0f0; */
+   border: 1px solid #4a5568;
+}
+.domainList{
+  margin-top:8px;
+  font-size:13px;
+  color:#123;
+  max-height: 120px; /* Adjust as needed */
+  overflow-y: auto;
+  /* margin-bottom: 5px; */
+ 
+}
+
+.footer{display:flex;gap:8px;justify-content:space-between;margin-top:12px}
+/* --- START: THEME TOGGLE AND DARK MODE --- */
+
+/* 1. Theme Toggle Button Styling */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a5568; /* Default icon color */
+}
+
+.theme-toggle:hover {
+  background-color: #f1f1f1;
+}
+
+/* Default: Show moon, hide sun */
+.theme-toggle .icon-sun {
+  display: none;
+}
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+
+/* 2. Dark Mode Styles */
+/* These apply when the <body> has the "dark-mode" class */
+
+body.dark-mode {
+  /* Dark background for the window itself */
+  background-color: #1a202c;
+}
+
+body.dark-mode .card {
+  background: #2d3748;
+  color: #e2e8f0;
+  
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Lighter text for titles and timer */
+body.dark-mode .title,
+body.dark-mode .sub,
+body.dark-mode .goal,
+body.dark-mode #timerBig,
+body.dark-mode #todaySummary,
+body.dark-mode .domainList div {
+  color: #f7fafc;
+}
+
+/* Dark mode buttons */
+body.dark-mode .btn {
+  background-color: #4a5568;
+  color: #f7fafc;
+  border-color: #718096;
+}
+body.dark-mode .btn.primary {
+  background-color: #3182ce;
+  border-color: #3182ce;
+  color: white;
+}
+body.dark-mode .btn.ghost {
+  background: none;
+  color: #a0aec0;
+  border-color: #4a5568;
+}
+body.dark-mode .btn:disabled {
+  background-color: #4a5568;
+  opacity: 0.5;
+}
+
+/* Dark mode progress bar */
+body.dark-mode .progress {
+  background-color: #4a5568;
+}
+body.dark-mode #progressFill {
+  background-color: #3182ce;
+}
+
+/* Dark mode toggle icon */
+body.dark-mode .theme-toggle {
+  color: #f6e05e; /* Sun yellow */
+}
+body.dark-mode .theme-toggle:hover {
+  background-color: #4a5568;
+}
+
+/* Swap icons in dark mode */
+body.dark-mode .theme-toggle .icon-sun {
+  display: block;
+}
+body.dark-mode .theme-toggle .icon-moon {
+  display: none;
+}
+
+/* --- END: THEME TOGGLE AND DARK MODE --- */
+
+/* --- Add this to the end of popup.css --- */
+
+.success-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Make it take up the same space as the timer */
+  min-height: 380px; 
+}
+
+.success-screen h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1.25rem;
+  color: #2c5282;
+}
+
+.success-screen p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+.success-screen .success-icon {
+  color: #38a169; /* Green */
+}
+
+/* Dark mode styles for success screen */
+body.dark-mode .success-screen h2 {
+  color: #90cdf4;
+}
+body.dark-mode .success-screen p {
+  color: #a0aec0;
+}
+body.dark-mode .success-screen .success-icon {
+  color: #68d391; /* Lighter green */
+}
+/* --- Popup Dark Mode Fixes --- */
+
+/* This fixes the white box for your summary.
+  It gives it a dark background and light text.
+*/
+body.dark-mode .summary {
+  background-color: #1a202c; /* A darker, "inset" background */
+  color: #e2e8f0;           /* Default light text */
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* This ensures the text *inside* the summary 
+  (like "mail.google.com") is bright and readable.
+*/
+body.dark-mode .summary #todaySummary,
+body.dark-mode .summary #domainList div {
+  color: #f7fafc; 
+}
+
+/* This fixes your invisible "Export CSV" button.
+  It gives it a light grey text color.
+*/
+body.dark-mode .btn.ghost {
+  background: none;
+  color: #a0aec0; /* Light grey text */
+  border-color: #4a5568;
+}
+
+body.dark-mode .btn.ghost:hover {
+  background-color: #4a5568;
+  color: #f7fafc;
+}
+
+/* This improves the "Open Dashboard" button.
+*/
+body.dark-mode .btn.small {
+   background-color: #4a5568;
+   color: #f7fafc;
+   border-color: #718096;
+}
+body.dark-mode .btn.small:hover {
+   background-color: #5a6578;
+}
+
+
+/* --- START: Button Tooltip Styles --- */
+
+/* 1. Wrapper for positioning */
+.btn-wrapper {
+  position: relative;
+  display: inline-block; /* Allows it to sit in line with other buttons */
+}
+
+/* 2. The tooltip text (hidden by default) */
+.btn-wrapper .tooltip-text {
+  visibility: hidden;
+  width: 140px; /* Set a specific width */
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  
+  /* Position it above the button */
+  position: absolute;
+  z-index: 10;
+  bottom: 125%; /* Place it above the button */
+  left: 50%;
+  margin-left: -70px; /* Use half of the width to center it */
+
+  /* Fade in */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 3. Arrow for the tooltip */
+.btn-wrapper .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* 4. The magic rule: Show tooltip on hover *only when* the button is disabled */
+.btn-wrapper button:disabled:hover + .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 5. Dark mode adjustments for the tooltip */
+body.dark-mode .btn-wrapper .tooltip-text {
+  background-color: #f7fafc;
+  color: #1a202c; /* Dark text */
+}
+
+body.dark-mode .btn-wrapper .tooltip-text::after {
+   border-color: #f7fafc transparent transparent transparent;
+}
+/* --- END: Button Tooltip Styles --- */
+
+
+/* --- START: Summary Tabs & Task List --- */
+
+/* Tab Navigation */
+.summary-nav {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+.summary-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #a0aec0;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+.summary-tab:hover {
+  color: #4a5568;
+}
+.summary-tab.active {
+  color: #3182ce;
+  border-bottom-color: #3182ce;
+}
+
+/* Task List Input */
+.task-input-row {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+#taskInput {
+  flex: 1;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+#addTaskBtn {
+  flex-shrink: 0;
+  padding: 0 12px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Task List UL */
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 105px; /* Adjust as needed */
+  overflow-y: auto;
+}
+#taskList li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 5px 2px;
+  word-break: break-word;
+}
+#taskList li.completed {
+  color: #a0aec0;
+  text-decoration: line-through;
+}
+#taskList input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+.delete-task {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: auto;
+  padding: 0 5px;
+  border-radius: 4px;
+}
+.delete-task:hover {
+  color: #ff0000;
+  background-color: #f1f1f1;
+}
+
+/* --- Dark Mode for Tabs & Tasks --- */
+
+body.dark-mode .summary-nav {
+  border-bottom-color: #4a5568;
+}
+body.dark-mode .summary-tab {
+  color: #718096;
+}
+body.dark-mode .summary-tab:hover {
+  color: #a0aec0;
+}
+body.dark-mode .summary-tab.active {
+  color: #63b3ed;
+  border-bottom-color: #63b3ed;
+}
+
+body.dark-mode #taskInput {
+  background-color: #1a202c;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+body.dark-mode #taskList li.completed {
+  color: #718096;
+}
+body.dark-mode .delete-task {
+  color: #718096;
+}
+body.dark-mode .delete-task:hover {
+  color: #ff6b6b;
+  background-color: #2d3748;
+}
+
+/* --- END: Summary Tabs & Task List --- */
